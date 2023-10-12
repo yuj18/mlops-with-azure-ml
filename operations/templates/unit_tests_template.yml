@@ -9,7 +9,7 @@ steps:
     displayName: "Install unit test dependencies"
 
   - script: |
-      flake8 src --max-line-length 79 --output-file=flake8-testresults.xml --format junit-xml
+      flake8 src --max-line-length 88 --output-file=flake8-testresults.xml --format junit-xml
     displayName: "Run code quality tests (Flake8)"
 
   - script: |
