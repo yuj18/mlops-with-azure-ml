@@ -1,4 +1,4 @@
-# Welcome to the MLOps Playground! 👋
+# Welcome to the MLOps Playground!
 
 This repository serves as a playground for exploring and experimenting with MLOps using a deploy-code approach. Discover how to implement key components of MLOps in a modularized fashion, ensuring code quality through validation tests, and deploying models with parametrized CI/CD pipelines.
 
@@ -170,4 +170,4 @@ Feel free to explore each folder and leverage the provided structure to organize
 
 ## Let's Get Started! 🚀
 
-Explore the provided examples, experiment with the MLOps reference architecture, and adapt it to your specific needs. Happy coding! 😊
+Explore the provided examples, experiment with the MLOps reference architecture, and adapt it to your specific needs and requirements. 
