@@ -11,10 +11,8 @@ on:
       - main
 
 jobs:
-  build-linux:
+  unit-test:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 5
 
     steps:
       - name: Checkout code
@@ -25,7 +23,15 @@ jobs:
         with:
           python-version: 3.8
 
+      - name: Add conda to system path
+        run: |
+          # $CONDA is an environment variable pointing to the root of the miniconda directory
+          echo $CONDA/bin >> $GITHUB_PATH
       - name: Install dependencies
+        run: |
+          conda env update --file environment/conda.yml --name base
+
+      - name: Install additional dependencies for unit tests
         run: pip install -r environment/unit_test_requirements.txt
 
       - name: Run Flake8
