@@ -1,0 +1,32 @@
+name: Run Unit Tests for PR in This repo
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: pip install -r environment/unit_test_requirements.txt
+
+      - name: Run Flake8
+        run: flake8 src --max-line-length 88 --output-file=flake8-testresults.xml --format junit-xml
+
+      - name: Run Bandit
+        run: bandit -r src notebooks
+
+      - name: Run Pytest
+        run: pytest -v tests --doctest-modules --junitxml=unit-testresults.xml  --cov=src --cov-append --cov-report=xml:coverage.xml
